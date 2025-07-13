@@ -1,0 +1,8 @@
+.hero {
+  display: grid;
+  place-items: center;
+  min-height: 80vh;
+  background: url('../assets/hero.jpg') center/cover;
+  text-shadow: 0 2px 8px #0005;
+}
+.hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); color:#fff; }

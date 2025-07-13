@@ -1,0 +1,2 @@
+#resultGrid { display:grid; gap:1rem; margin-top:2rem; }
+@media(min-width:768px){ #resultGrid{grid-template-columns:1fr 1fr;} }

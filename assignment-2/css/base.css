@@ -1,0 +1,45 @@
+/* base.css — “design system” */
+:root {
+  --font: 'Inter', sans-serif;
+  --radius: 10px;
+
+  /* light palette */
+  --bg: #f5f7fa;
+  --surface: #fff;
+  --primary: #4f46e5;
+  --text: #1f2937;
+
+  /* dark palette (optional) */
+}
+
+*,*::before,*::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* util */
+.btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius);
+  background: var(--primary);
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn:hover { background: #4338ca; }
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: 0 8px 20px rgb(0 0 0 / 0.04);
+}
+input[type="text"] {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius);
+}
