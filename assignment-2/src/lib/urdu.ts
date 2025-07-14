@@ -1,7 +1,5 @@
-// A mid‑size static dictionary (≈250 entries).
-// Completely client‑side, no API calls.
 const DICT: Record<string, string> = {
-  // nouns / key concepts
+  
   success: 'کامیابی',
   failure: 'ناکامی',
   life: 'زندگی',
@@ -47,7 +45,7 @@ const DICT: Record<string, string> = {
   data: 'ڈیٹا',
   analysis: 'تجزیہ',
 
-  // verbs (base form)
+  
   be: 'ہونا',
   have: 'رکھنا',
   do: 'کرنا',
@@ -78,7 +76,7 @@ const DICT: Record<string, string> = {
   start: 'شروع کرنا',
   finish: 'مکمل کرنا',
 
-  // adjectives / adverbs
+  
   good: 'اچھا',
   bad: 'برا',
   better: 'بہتر',
@@ -109,7 +107,7 @@ const DICT: Record<string, string> = {
   popular: 'مقبول',
   beautiful: 'خوبصورت',
 
-  // prepositions / misc (high‑frequency functional words)
+  
   and: 'اور',
   or: 'یا',
   but: 'لیکن',
@@ -135,7 +133,7 @@ const DICT: Record<string, string> = {
   to: 'کو',
   of: 'کا',
 
-  // pronouns / determiners
+  
   i: 'میں',
   you: 'آپ',
   he: 'وہ',
@@ -148,7 +146,7 @@ const DICT: Record<string, string> = {
   these: 'یہ',
   those: 'وہ',
 
-  // numbers
+  
   one: 'ایک',
   two: 'دو',
   three: 'تین',
@@ -175,11 +173,32 @@ const DICT: Record<string, string> = {
   said: 'کہا',
   improving: 'بہتری لانا',
   improves: 'بہتر بنانا',
+
+  "CORS": "کراس اوریجن ریسورس شیئرنگ",
+  "Cross-Origin Resource Sharing": "کراس اوریجن ریسورس شیئرنگ",
+  "Hard": "مشکل",
+  "browsers": "براؤزرز",
+  "fetch": "حاصل کرنا",
+  "behaviours": "رویہ",
+  "web browser": "ویب براؤزر",
+  "thirty years ago": "تیس سال پہلے",
+  "What is HTTP3": "HTTP3 کیا ہے؟",
+  "How to write a JavaScript library":"جاوا اسکرپٹ لائبریری کیسے لکھیں",
+  "Understanding React Server Components":"ری ایکٹ سرور کمپونینٹس کو سمجھنا",
+  "A complete guide to useEffect":"useEffect کا مکمل رہنما",
+  "Avatars":"اوتار / نمائشی تصاویر",
+  "Largest Contentful Paint (LCP)":"سب سے بڑی مواد کی پینٹنگ (LCP)",
+  "A gentle intro to GDB":"GDB کا نرم تعارف",
+  "Feature Toggles":"فیچر ٹوگلز / خصوصیت سوئچز",
+  "useEffect Hook Examples":"useEffect ہُک کی مثالیں",
+  "Prompt Injections":"پرامپٹ انجیکشنز",
 };
 
 export function toUrdu(text: string): string {
-  return text
-    .split(/\s+/)
-    .map((w) => DICT[w.toLowerCase()] ?? w)
-    .join(' ');
+  let translated = text;
+  for (const [eng, urdu] of Object.entries(DICT)) {
+    const regex = new RegExp(`\\b${eng}\\b`, 'gi');
+    translated = translated.replace(regex, urdu);
+  }
+  return translated;
 }
