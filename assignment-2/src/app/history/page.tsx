@@ -16,7 +16,7 @@ export async function deleteAll(): Promise<void> {
 /* ── page component ───────────────────────────────────── */
 export default async function HistoryPage() {
   const summaries = await prisma.summary.findMany({
-    orderBy: { createdAT: 'desc' },
+    orderBy: { createdAt: 'desc' },
   });
 
   return (
@@ -49,7 +49,7 @@ export default async function HistoryPage() {
       <HistoryList
         initialData={summaries.map((s) => ({
           ...s,
-          createdAT: s.createdAT.toISOString(), // convert Date → string
+          createdAT: s.createdAt.toISOString(), // convert Date → string
         }))}
       />
     </main>
