@@ -1,19 +1,10 @@
 // src/app/history/page.tsx
 import { prisma } from '@/lib/prisma';
 import HistoryList from './HistoryList';
-import { revalidatePath } from 'next/cache';
+import { deleteAll } from './actions';
 
 export const dynamic = 'force-dynamic'; // always fresh builds
 
-/* ── server‑side  Delete‑All  action ──────────────────── */
-export async function deleteAll(): Promise<void> {
-  'use server';
-  await prisma.summary.deleteMany();
-  // make sure /history is re‑validated after deletion
-  revalidatePath('/history');
-}
-
-/* ── page component ───────────────────────────────────── */
 export default async function HistoryPage() {
   const summaries = await prisma.summary.findMany({
     orderBy: { createdAt: 'desc' },
@@ -25,7 +16,7 @@ export default async function HistoryPage() {
         📜 Summary History
       </h1>
 
-      {/* Search bar + Delete‑All */}
+      {/* Search bar + Delete-All */}
       {summaries.length > 0 && (
         <div className="w-full max-w-3xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <input
